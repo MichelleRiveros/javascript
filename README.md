@@ -91,6 +91,100 @@ las variables <u>const</u> se deben declarar e inicializar en una sola linea de 
 
 
 
+
+
+## 														ARRAYS 
+
+Es una estructura de datos que se utiliza para almacenar una colección ordenada de elementos. Estos elementos pueden ser cualquier tipo de datos, como números, cadenas de texto, objetos, funciones, etc.
+
+Los arrays en JavaScript son objetos especiales con propiedades y métodos predefinidos que permiten manipular y acceder a sus elementos de manera eficiente.
+
+Cuando se dice que los arrays en JavaScript son "objetos especiales", significa que, aunque se comportan como colecciones ordenadas de elementos similares a los arrays en otros lenguajes de programación, en JavaScript, técnicamente son instancias de un objeto con ciertas características especiales y propiedades específicas.
+
+```javascript
+// Crear un array vacío
+var miArray = [];
+
+// Crear un array con elementos
+var numeros = [1, 2, 3, 4, 5];
+var palabras = ["hola", "mundo"];
+var mezclado = [1, "hola", true];
+```
+
+
+
+Para acceder a los elementos de un array, puedes usar corchetes y el índice del elemento que deseas acceder. Los índices de los arrays en JavaScript comienzan en 0.
+
+```javascript
+var numeros = [1, 2, 3, 4, 5];
+
+console.log(numeros[0]); // imprime 1
+console.log(numeros[2]); // imprime 3
+```
+
+
+
+Algunas de las propiedades y métodos más comunes de los arrays en JavaScript incluyen:
+
+- `length` : Propiedad que indica la longitud del array, es decir, el número de elementos que contiene.
+
+  ```javascript
+  var numeros = [1, 2, 3, 4, 5];
+  console.log(numeros.length); // imprime 5
+  ```
+
+- `push()`: Método que agrega uno o más elementos al final del array y devuelve la nueva longitud del array.
+
+  ```javascript
+  var numeros = [1, 2, 3, 4, 5];
+  numeros.push(6);
+  console.log(numeros); // imprime [1, 2, 3, 4, 5, 6]
+  ```
+
+- `pop()`:  Método que elimina el último elemento del array y lo devuelve.
+
+  ```javascript
+  var numeros = [1, 2, 3, 4, 5];
+  var ultimoElemento = numeros.pop();
+  console.log(ultimoElemento); // imprime 5
+  console.log(numeros); // imprime [1, 2, 3, 4]
+  ```
+
+- `shift()`:  Método que elimina el primer elemento del array y lo devuelve.
+
+  ```javascript
+  var numeros = [1, 2, 3, 4, 5];
+  var primerElemento = numeros.shift();
+  console.log(primerElemento); // imprime 1
+  console.log(numeros); // imprime [2, 3, 4, 5]
+  ```
+
+- `unshift()`:  Método que agrega uno o más elementos al principio del array y devuelve la nueva longitud del array.
+
+  ```javascript
+  var numeros = [2, 3, 4, 5];
+  numeros.unshift(1);
+  console.log(numeros); // imprime [1, 2, 3, 4, 5]
+  ```
+
+- `splice()`: Método que cambia el contenido de un array, eliminando elementos existentes y/o agregando nuevos elementos.
+
+  ```javascript
+  var numeros = [1, 2, 3, 4, 5];
+  var subArray = numeros.slice(1, 3);
+  console.log(subArray); // imprime [2, 3]
+  ```
+
+- `slice()`: Método que devuelve una copia superficial de una porción de un array en un nuevo array.
+
+  ```javascript
+  var numeros = [1, 2, 3, 4, 5];
+  numeros.splice(2, 1); // Elimina un elemento desde el índice 2
+  console.log(numeros); // imprime [1, 2, 4, 5]
+  ```
+
+  
+
 #                                                      DATE
 
 
@@ -609,7 +703,7 @@ console.log(tiempoEnMilisegundos); // Devuelve el número de milisegundos desde 
 
     
 
-33. **Date.prototype.setYear(year)**
+33. **setYear(year)**
 
      Establece el año (usualmente de 2 a 3 dígitos) para una fecha específica de acuerdo a la <u>hora local</u>. Se recomienda usar `setFullYear()` en su lugar.
 
