@@ -2,7 +2,7 @@
 
 
 
-## <u>Caracteristicas</u>
+## Caracteristicas
 
 1. Es un **lenguaje interpretado**, como html y css.
 2.  **Orientado a objetos**, esto significa que es un lenguaje donde su estructura abarca todos los conceptos y todas las posibilidades que tiene un lenguaje orientado a objetos (clases, herencia, polimorfismo).
@@ -13,7 +13,7 @@
 
 
 
-## <u>Usos</u>
+## Usos
 
 1. Dinamismo de los sitios web
 2. Servidor en NodeJS
@@ -21,13 +21,13 @@
 
 
 
-## <u>Enlazar JS</u> 
+## Enlazar JS 
 
 <Script src="js/main.js"></script>
 
 
 
-## <u>Variables</u>
+## Variables
 
 Es un espacio que guardamos en memoria. En la variable se puede cambiar el contenido; La variable sigue siendo la misma, lo que cambia es el contenido.
 
@@ -47,17 +47,15 @@ Num = 2
 
 - Undefined  ->  Tipo de dato que dice que la variable existe en el programa pero no tiene valor (esta declarada pero no inicializada)
 
-- Null  ->
+- Null  ->  Representa la ausencia de valor. (Que no existe basicamente)
 
-- Nan  ->
+- Nan  -> 
 
   
 
 La variable se puede declarar, inicializar y modificar a lo largo del tiempo. Cuando nostros declaramos una variable, tenemos tres formas de declararlas: 
 
 <u>Scop</u>e - Es el alcance que tienen las variables: 
-
-- var  ->   Alcance global
 
 - let  ->  Alcance local 
 
@@ -91,7 +89,93 @@ las variables <u>const</u> se deben declarar e inicializar en una sola linea de 
 
 
 
+#### Convenciones y nomenclaturas
 
+- camelCase -> holaMundoLindo
+
+- snake_case -> hola_mundo_lindo
+
+- SCREAMING_CASE -> HOLA_MUNDO_LINDO
+
+  
+
+## OPERADORES 
+
+
+
+#### ARIGMETICOS
+
+- suma (+)
+
+- Resta (-)
+
+- Multiplicacion (*)
+
+- Division (/)
+
+- Modulo (%)
+
+- Exponente (**)
+
+  
+
+#### DE COMPARACION
+
+- <  l  >
+- <=  l  >=
+- ===
+- !==
+
+
+
+#### LOGICOS
+
+- AND (&&) -> Si ambos valores son se cumplen es True
+- OR (ll) -> Si uno de los dos es se cumple es True 
+- NOT (!) -> Este invierte el valor de un valor booleano 
+
+
+
+#### typeof
+
+- El operador typeof proporciona una cadena de texto que señala
+  el tipo de un operando, siendo aplicable a diversos tipos de
+  operandos, ya sea variables o literales.
+
+  ```javascript
+  let edad = 20
+  typeof(edad)
+  'number'
+  console.log(edad)
+  20
+  ```
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#### Comentarios
+
+- Comentar una sola linea // 
+- comentar varias lineas /* */
+
+
+
+#### Console.log()
+
+Es una función integrada en JavaScript que se utiliza para imprimir mensajes en la consola del navegador o del editor de código.
+
+- console.error() -> Imprime un mensaje de error 
+
+- console.warn() -> Imprime un mensaje de advertencia
+
+- console.info() -> Imprime un mensaje de informacion
+
+   
+
+  
 
 ## 														ARRAYS 
 
@@ -183,7 +267,10 @@ Algunas de las propiedades y métodos más comunes de los arrays en JavaScript i
   console.log(numeros); // imprime [1, 2, 4, 5]
   ```
 
-  
+
+
+
+
 
 #                                                      DATE
 
@@ -712,4 +799,84 @@ console.log(tiempoEnMilisegundos); // Devuelve el número de milisegundos desde 
     fecha.setYear(99); // Establece el año como 99
     console.log(fecha);
     ```
+
+
+
+### CONDICIONAL "if / else/ else if"
+
+El conficional "if" es un codigo que se ejecuta si la condicion (dentro del parentesis se cumple). 
+
+else -> Se utiliza para ejecutar un bloque de codigo diferente si la condicion "if" es falsa.
+
+else if -> Para comprobar mas de una condicion.
+
+
+
+DATO -> La anidacion de condicionales es cuando agregamos un "if" dentro de otro "if"
+
+```javascript
+const edad = 17;
+const tieneCarnet = true;
+
+if (edad >= 18){
+	if (tieneCarnet){
+		console.log('Puedes conducir');}
+	else{
+		console.log('No puedes conducir');}
+else {
+	console.log('No puedes conducir');}
+}
+```
+
+ 
+
+### SWITCH
+
+Estructura de control que nos permite ejecutar diferentes bloques de codigo dependiendo del valor de una expresion.
+
+```javascript
+switch (expresion){
+	case 1:
+		break
+	case 2:
+		break
+	case 3:
+		break
+	default:
+		//codigo a ejecutar si la expresion no coincide con ninguna opcion anterior
+		break
+}
+```
+
+
+
+### Agrupando cases
+
+
+
+```javascript
+const dia = new Date().getDay()
+
+switch (dia){
+	case 0:
+	case 6:
+		console.log("Hoy es fin de semana")
+		break
+	case 1:
+	case 2:
+	case 3: 
+	case 4:
+		console.log("NOooo, a trabajar")
+		break
+	case 5:
+		consle.log("Hoy es viernes")
+		break
+}
+```
+
+
+
+
+
+### El patron switch (true)
 
