@@ -6,7 +6,7 @@
 
 1. Es un **lenguaje interpretado**, como html y css.
 2.  **Orientado a objetos**, esto significa que es un lenguaje donde su estructura abarca todos los conceptos y todas las posibilidades que tiene un lenguaje orientado a objetos (clases, herencia, polimorfismo).
-3.  **Lenguaje imperativo** (se ejecuta paso x paso). Es basado en prototipos, instancias y classless.
+3.  **Lenguaje interpretado** (se ejecuta paso x paso). Es basado en prototipos, instancias y classless.
 4. **Tipado debil**, las variables pueden cambiar.
 5. **Lenguaje dinamico**, O sea que la variable se adapta al dato.
 6. Esta contruido sobre la tecnologia **ECMASCRIPT**. version 1 -> 1997.
@@ -57,7 +57,7 @@ La variable se puede declarar, inicializar y modificar a lo largo del tiempo. Cu
 
 <u>Scop</u>e - Es el alcance que tienen las variables: 
 
-- let  ->  Alcance local 
+- let  ->  Alcance local o global dependiendo de donde se inicialice
 
 - const  ->  Una variable que no se puede volver a inicializar. 
 
@@ -117,6 +117,10 @@ las variables <u>const</u> se deben declarar e inicializar en una sola linea de 
 
 - Exponente (**)
 
+- Incremento (++) - pre-incremento (++a) --  post-incremento (a++)  - (se incrementa en 1)
+
+- Decremento (--)  - pre-decremento (++a) --  post-decremento (a++) - (se decrementa en 1)
+
   
 
 #### DE COMPARACION
@@ -128,15 +132,94 @@ las variables <u>const</u> se deben declarar e inicializar en una sola linea de 
 
 
 
+#### DE ASIGNACION
+
+- += 
+
+  ```javascript
+  let miNumero = 10;
+  miNumero += 5;
+  console.log(miNumero); //imprime 15
+  ```
+
+- -=
+
+  ```javascript
+  let miNumero = 10;
+  miNumero -= 5;
+  console.log(miNumero); //imprime 5
+  ```
+
+  
+
+- *=
+
+  ```javascript
+  let miNumero = 10;
+  miNumero *= 5;
+  console.log(miNumero); //imprime 50
+  ```
+
+  
+
+- /=
+
+  ```javascript
+  let miNumero = 10;
+  miNumero /= 5;
+  console.log(miNumero); //imprime 2
+  ```
+
+  
+
+- %=
+
+  ```javascript
+  let miNumero = 10;
+  miNumero %= 5;
+  console.log(miNumero); //imprime 0
+  ```
+
+  
+
+- **=
+
+  ```javascript
+  let miNumero = 10;
+  miNumero **= 5;
+  console.log(miNumero); //imprime 100.000
+  ```
+
+  
+
 #### LOGICOS
 
 - AND (&&) -> Si ambos valores son se cumplen es True
+
 - OR (ll) -> Si uno de los dos es se cumple es True 
-- NOT (!) -> Este invierte el valor de un valor booleano 
+
+- NOT (!) -> Este invierte el valor original de un booleano
+
+  ```javascript
+  let a = true;
+  !a;
+  console.log(a); //imprime false
+  ```
 
 
 
-#### typeof
+#### Comparacion
+
+- == (Si los datos son iguales)
+- === (Si el dato y el TIPO de datos son igual)
+- != (Si los datos son distintos)
+- !==  (Si el dato y el TIPO de datos son distintos)
+- < / > (Menor que y Mayor que)
+- <= / >= (Menor o igual que y Mayor o igual que)
+
+
+
+## typeof
 
 - El operador typeof proporciona una cadena de texto que señala
   el tipo de un operando, siendo aplicable a diversos tipos de
@@ -177,13 +260,11 @@ Es una función integrada en JavaScript que se utiliza para imprimir mensajes en
 
   
 
-## 														ARRAYS 
+## 														ARRAYS (listas)
 
-Es una estructura de datos que se utiliza para almacenar una colección ordenada de elementos. Estos elementos pueden ser cualquier tipo de datos, como números, cadenas de texto, objetos, funciones, etc.
 
-Los arrays en JavaScript son objetos especiales con propiedades y métodos predefinidos que permiten manipular y acceder a sus elementos de manera eficiente.
 
-Cuando se dice que los arrays en JavaScript son "objetos especiales", significa que, aunque se comportan como colecciones ordenadas de elementos similares a los arrays en otros lenguajes de programación, en JavaScript, técnicamente son instancias de un objeto con ciertas características especiales y propiedades específicas.
+Permite almacenar multiples valores en una sola variable, en lugar de definir varias variables.
 
 ```javascript
 // Crear un array vacío
@@ -200,15 +281,37 @@ var mezclado = [1, "hola", true];
 Para acceder a los elementos de un array, puedes usar corchetes y el índice del elemento que deseas acceder. Los índices de los arrays en JavaScript comienzan en 0.
 
 ```javascript
-var numeros = [1, 2, 3, 4, 5];
+let numeros = [1, 2, 3, 4, 5];
 
 console.log(numeros[0]); // imprime 1
 console.log(numeros[2]); // imprime 3
 ```
 
+```javascript
+let numeros = []; //Se creo un arreglo vacio
+
+numeros[0] = 10; //El indice "0" ahora tiene el valor de 10
+numeros[4] = 50 // El indice "4" ahora tiene el valor de 50
+
+//Como se le asigno un valor al indice 4 en el array, lo que hace el sistema se reserva el espacio en memoria de los indices 1,2 y 3 pero sin ningun valor, o sea, su valor seria Undefined.
+console.log(numeros[0]); // imprime 10
+console.log(numeros[2]); // imprime Undefined
+```
 
 
-Algunas de las propiedades y métodos más comunes de los arrays en JavaScript incluyen:
+
+iterar un arreglo
+
+```javascript
+for (let i = 0; i < numerosArreglo.length, i++){
+	console.log(numeroArreglo[i]);}
+```
+
+
+
+*Algunas de las propiedades y métodos más comunes de los arrays en JavaScript incluyen:*
+
+
 
 - `length` : Propiedad que indica la longitud del array, es decir, el número de elementos que contiene.
 
@@ -266,6 +369,690 @@ Algunas de las propiedades y métodos más comunes de los arrays en JavaScript i
   numeros.splice(2, 1); // Elimina un elemento desde el índice 2
   console.log(numeros); // imprime [1, 2, 4, 5]
   ```
+
+- `indexOf()`:  
+
+  ```javascript
+  
+  ```
+
+- `forEach()`: 
+
+  ```javascript
+  
+  ```
+
+- `join()`: 
+
+  ```javascript
+  
+  ```
+
+
+
+## MATRICES
+
+
+
+Una matriz es un arreglo de 2 dimensiones
+
+```javascript
+let matriz = [[],[]]; // -> matriz de 2 renglones x 3 columnas
+
+matriz[0][0] = 100;  //Renglon 0 y columna 0 = 100
+matriz[0][1] = 200; //Renglon 0 y columna 1 = 200
+
+console.log(matriz[0][1]); //Imprime 200
+
+let matriz = [[100, 200, 300],[500, 700, 800]];
+console.log(matriz[0][1]); //Imprime 700
+
+```
+
+
+
+**Iterar los elementos de una matriz**
+
+1. saber cuantos renglones tenemos en la matriz
+
+```javascript
+let matriz = [[100, 200, 300],[500, 700, 800]];
+
+console.log(matriz.length); //Imprime 2
+```
+
+2.  Saber cuantas columnas tiene cada renglon
+
+```javascript
+console.log(matriz[0].length); //Imprime 3
+```
+
+3. Iteracion con ciclos "for"
+
+```javascript
+for(let ren = 0; ren < matriz.length; ren++){
+	//Columnas
+	for(let column = 0; column < matriz[ren].length; column++){
+		console.log(matriz[ren][column]);
+	}
+}
+```
+
+
+
+## OBJETOS (diccionarios)
+
+Los objetos tienen distintas propiedades y metodos.
+
+```javascript
+let persona = {
+    nombre: 'Michelle',
+    Apellido: 'Riveros',
+    email: 'michelleriveros232002@hotmail.com',
+    edad: 28
+}
+
+// Las propiedades y/o atributos del objeto "persona" son nombre, apellido, email y edad.
+
+consola.log(persona.nombre); //Imprime Michelle
+```
+
+
+
+#### Como agregar un metodo a un objeto
+
+```javascript
+let persona = {
+    nombre: 'Michelle',
+    Apellido: 'Riveros',
+    email: 'michelleriveros232002@hotmail.com',
+    edad: 28,
+    nombreCompleto: function(){
+    //Operador this, es la forma en la que podemos acceder a las propiedades de un objeto 		estando dentro del objeto
+        return this.nombre + ' ' + this.Apellido;
+    }
+}
+
+console.log(persona.nombreCompleto())
+```
+
+
+
+```javascript
+//RECORRER CADA PROPIEDAD (KEY) Y VALOR DEL OBJETO
+
+for( let i in persona){
+	console.log(i); //-> acceder a la llave
+	console.log(persona[i]); // -> acceder a los valores de cada objeto
+}
+
+//AGREGAR UNA NUEVA PROPIEDAD (KEY)
+persona.tel = '34553543'; //( "tel" es el nombre de la nueva propiedad o llave)
+
+
+//MODIFICAR UNA PROPIEDAD (KEY)
+persona.tel = '45743245';
+
+//ELIMINAR UNA PROPIEDAD (KEY)
+delete perona.tel;
+
+//MANDAR A IMPRIMIR UN OBJETO EN EL NAVEGADOR WEB
+
+1. Forma
+for( let i in persona){
+	console.table(`${i} ${persona[i]}`); //-> acceder a la llave
+}
+
+2. Forma
+let personaObjeto = Object.values(persona);
+
+3. Forma
+let personaString = JSON.stringify ( persona );
+
+//Metodo JSON.stringify nos convierte nuestro objeto a una cadena de texto.
+//El metodo Stringify lo que hace es convertir cada uno de las propiedades de nuestro objeto a una cadena. 
+```
+
+
+
+#### Metodo get y set en objetos
+
+```javascript
+let persona = {
+    nombre: 'Michelle',
+    Apellido: 'Riveros',
+    email: 'michelleriveros232002@hotmail.com',
+    edad: 28,
+    nombreCompleto: function(){
+    //Operador this, es la forma en la que podemos acceder a las propiedades de un objeto 		estando dentro del objeto
+        return this.nombre + ' ' + this.Apellido;
+    }
+}
+
+console.log(persona.nombreCompleto())
+
+//get -> nos permite acceder a los valores de nuestras propiedades(keys)
+
+let persona = {
+    nombre: 'Michelle',
+    Apellido: 'Riveros',
+    email: 'michelleriveros232002@hotmail.com',
+    edad: 28,
+    get nombreCompleto(){
+    //Operador this, es la forma en la que podemos acceder a las propiedades de un objeto 		estando dentro del objeto
+        return this.nombre + ' ' + this.Apellido;
+    }
+}
+
+console.log( persona.nombreCompleto); // -> ya no hay necesidad de llamar a la funcion
+
+//set -> Establecer o modificar los valores de los atributos de nuestros obejtos
+
+let persona = {
+    nombre: 'Michelle',
+    Apellido: 'Riveros',
+    email: 'michelleriveros232002@hotmail.com',
+    edad: 28,
+    idioma: 'es_co',
+    get lang(){
+        return this.idioma.toUpperCase();
+        //toUpperCase lo que hace es convertir una cadena de texto a mayusculas
+    },
+    set lang (lang){  //AQUI LO MODIFICAMOS A MAYUSCULAS
+        this.idioma = lang.toUpperCase();
+    },
+    get nombreCompleto(){
+    //Operador this, es la forma en la que podemos acceder a las propiedades de un objeto 		estando dentro del objeto
+        return this.nombre + ' ' + this.Apellido;
+    }
+}
+
+persona.lang = 'en';
+console.log(persona.lang);
+```
+
+
+
+#### Metodos constructores de objetos
+
+Es una funcion especial que se trabaja con objetos en JavaScript
+
+```javascript
+//Funcion contructor de objetos de tipo persona
+function Persona(nombre, apellido, email){
+	this.nombre = nombre;
+    this.apellido = apellido;
+    this.email = email;
+    this.nombreCompleto = function(){
+        return this.nombre + ' ' + this.apellido;
+    }
+}
+
+//EL NOMBRE DE LA FUNCION CONSTRUCTORA DEBE INICIAR CON MAYUSCULA
+
+Persona.prototype.tel = '24534635';
+
+let objeto = new Persona('michelle','riveros','michelle@hotmail.com');
+let objeto1 = new Persona('mich','riv','mich@hotmail.com');
+
+//AGREGAR UNA NUEVA PROPIEDAD A EL OBJETO DE TIPO PERSONA QUE VAMOS A CREAR
+
+Persona.prototype.tel = '24534635'; //"tel" es la llave
+
+console.log(objeto);
+
+```
+
+
+
+### METODO CALL
+
+Nos va a permitir llamar un metodo que esta definidio en un objeto en desde otro objeto.
+
+```javascript
+let persona1 = {
+	nombre: 'juan',
+	Apellido: 'perez',
+	nombreCompleto: function(titulo, tel){
+		return titulo + this.nombre + this.Apellido + tel;
+	}
+}
+
+let persona2 = {
+	nombre: 'Carlos',
+	Apellido: 'Lara'
+}
+
+//Vamos a hacer uso del metodo "nombreCompleto" que se encuentra en el objeto "persona1", pero con los datos de la persona2
+
+console.log( persona1.nombreCompleto.call( persona2, 'Ing', '4757634'));
+//Imprime Ing Carlos Lara 4757634
+```
+
+
+
+### METODO APPLY
+
+```javascript
+let persona1 = {
+	nombre: 'juan',
+	Apellido: 'perez',
+	nombreCompleto: function(titulo, tel){
+		return titulo + this.nombre + this.Apellido + tel;
+	}
+}
+
+let persona2 = {
+	nombre: 'Carlos',
+	Apellido: 'Lara'
+}
+
+//Vamos a hacer uso del metodo "nombreCompleto" que se encuentra en el objeto "persona1", pero con los datos de la persona2
+
+let arreglo = ['ing','7368362387'];
+
+console.log( persona1.nombreCompleto.apply( persona2, arreglo));
+//Imprime Ing Carlos Lara 4757634
+```
+
+
+
+# CLASES 
+
+Es una plantilla, se definen los atributos y metodos. A partir de esta creamos ojetos que son instancia de una clase.
+
+```javascript
+class Person{
+    constructor(nombre, apellido){  //constructor
+        this.nombre = nombre;
+        this.apellido = apellido;
+    } 
+}
+
+let array = new Person('Michelle','Riveros');
+console.log(array);
+```
+
+
+
+##### Metodo get y set en clases
+
+```javascript
+class Person{
+    constructor(nombre, apellido){  //constructor
+        this.Nombre = nombre;
+        this.Apellido = apellido;
+    } 
+    
+    get nombre(){
+    	return this.Nombre;
+    }
+    
+    set nombre(nombre){
+        this.Nombre = nombre;
+    }
+}
+
+let array = new Person('Michelle','Riveros');
+array.nombre = 'Maria';
+console.log(array.nombre);
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+### CONDICIONAL "if / else if/ else"
+
+El conficional "if" es un codigo que se ejecuta si la condicion (dentro del parentesis se cumple). 
+
+else if -> Para comprobar mas de una condicion.
+
+else -> Se utiliza para ejecutar un bloque de codigo diferente si la condicion "if" es falsa.
+
+
+
+DATO -> La anidacion de condicionales es cuando agregamos un "if" dentro de otro "if"
+
+```javascript
+const edad = 17;
+const tieneCarnet = true;
+
+if (edad >= 18){
+	if (tieneCarnet){
+		console.log('Puedes conducir');}
+	else{
+		console.log('No puedes conducir');}
+else {
+	console.log('No puedes conducir');}
+}
+```
+
+ 
+
+### SWITCH
+
+Estructura de control que nos permite ejecutar diferentes bloques de codigo dependiendo del valor de una expresion.
+
+```javascript
+switch (expresion){
+	case 1:
+		break
+	case 2:
+		break
+	case 3:
+		break
+	default:
+		//codigo a ejecutar si la expresion no coincide con ninguna opcion anterior
+		break
+}
+```
+
+
+
+### Agrupando cases
+
+
+
+```javascript
+const dia = new Date().getDay()
+
+switch (dia){
+	case 0:
+	case 6:
+		console.log("Hoy es fin de semana")
+		break
+	case 1:
+	case 2:
+	case 3: 
+	case 4:
+		console.log("NOooo, a trabajar")
+		break
+	case 5:
+		consle.log("Hoy es viernes")
+		break
+}
+```
+
+
+
+### El patron switch (true)
+
+
+
+### OPERADOR TERNARIO
+
+```javascript
+//(condicion) ? bloque por si se cumple : bloque por si no se cumple;
+let a = 3;
+(a > 9) ? console.log(++a) : a--;
+// resultado -> a = 2
+```
+
+
+
+## Ciclos
+
+Nos permite repetir un bloque de codigo mientras la condicion sea verdadera.
+
+#### Tipos de clicos: 
+
+- While
+
+  ```javascript
+  while (condicion){ //Bloque de codigo}
+  while (5 > 2) { alert("Hola");}
+  ```
+
+  
+
+- do while 
+
+  El ciclo "do while" ejecuta al menos una vez su bloque de codigo debido a que la condicion a revisar se encuentra al final del bloque.
+
+  ```javascript
+  do {} while(condicion);
+  
+  let conadot = 0, repeticiones = 5;
+  
+  do{
+      console.log(contador++);
+  } while(contador <= repeticiones);
+  ```
+
+  
+
+- for
+
+  Especificamos cuantas veces queremos repetir su bloque de codigo.
+
+  ```javascript
+  for (declaracion de variales (tipo contador); condicion; incremento de contadores){
+      //BLoque de codigo
+  }
+  ```
+
+  
+
+## FUNCIONES
+
+Bloque de codigo reutilizable que nos va a permitir realizar una tarea en particular. Puede tener parametros de entrada y tambien puede devolver un valor de salida, pero estos son opcionales.
+
+```javascript
+function suma(parametros){ 
+    //Cuerpo de la funcion (bloque de codigo); return (valor de retorno) 
+}
+
+//Declaracion
+function imprimir( a (paramentro)){
+    console.log( a (parametro));
+}
+
+//Llamado funcion
+imprimir(100 (Argumento)); 
+```
+
+
+
+#### *Diferencia entre Parametros y Argumentos en una funcion*
+
+- Parametro -> Es la variable que se define en la funcion al momento de la declaracion de la funcion
+- Argumento -> Es la variable que se le pasa a la funcion cuando la llamamos
+
+
+
+#### Diferencia entre procedimiento y funcion
+
+- Procedimiento -> Cuando lo declaramos no retorna ningun tipo de informacion al programa principal.
+- Funcion ->Cuando lo declaramos retorna informacion al programa principal.
+
+
+
+#### TIPOS DE FUNCIONES
+
+- Funciones definidas por el usuario
+- Funciones incorporadas (Built - in)
+
+
+
+## FUNCIONES RECURSIVAS
+
+Basicamente son las funciones que se mandan a llamar asi mismas. 
+
+```javascript
+function funcionRecursiva(n){
+	if (n == 1){
+		console.log("hola");
+    } else{
+		console.log(n);
+		funcionRecursiva(n-1);
+	}
+}
+
+funcionRecursiva(15);
+```
+
+
+
+## FUNCIONES INCORPORADAS CON CADENAS
+
+```javascript
+//Una cadena es inmutable y es un array.
+let cadena1 = "Hola"
+
+//obtener el largo de una cadena de texto
+console.log(cadena1.length); //Imprime 4
+
+//Recorrer cadena
+for (let i = 0; i < cadena1.length; i++){
+    console.log(cadena[i]); //Imprime H,o,l,a
+}
+```
+
+
+
+#### Sub-Cadenas 
+
+Extracto de caracteres de la cadena original
+
+```javascript
+let cadena3 = "Hola Mundo";
+
+let cadena1 = cadena3.substring(0,4);
+
+console.log(cadena1); //Imprime Hola
+```
+
+
+
+#### Concatenacion de Cadenas
+
+Unir dos o mas cadenas en una sola
+
+```javascript
+let cadena1 = "Hola";
+let cadena2= "Mundo";
+
+let cadena = cadena1 + cadena2;
+console.log(cadena); //Imprime HolaMundo
+
+let cadena = cadena1 + '' + cadena2;
+console.log(cadena); //Imprime Hola Mundo
+
+//Tambien podemos utilizar String Interpolation
+
+let cadena = `${cadena1} ${cadena2}`;
+console.log(cadena); //Imprime Hola Mundo
+```
+
+<!--La sobrecarga de operadores, también conocida como "operator overloading" en inglés, es una característica que permite a los programadores definir el comportamiento de los operadores en sus propios tipos de datos personalizados. Sin embargo, en JavaScript, a diferencia de otros lenguajes de programación como C++ o Python, no hay soporte nativo para la sobrecarga de operadores.-->
+
+<!--En lenguajes como C++ o Python, la sobrecarga de operadores permite definir cómo los operadores como `+`, `-`, `*`, `/`, entre otros, deben funcionar para tipos de datos personalizados como clases. Esto significa que puedes definir cómo se suman, restan, multiplican o dividen objetos de tus clases.-->
+
+
+
+#### Convertir una numero a string
+
+```javascript
+let a = 10, b = 20;
+
+let concatenacion = a.toString() + b.toString();
+
+console.log(concatenacion) //Imprime 1020
+```
+
+
+
+#### Valor absoluto de un numero
+
+```javascript
+//Valor absoluto
+
+let numero = -10;
+let valorAbsoluto = Math.abs(numero);
+
+console.log(valorAbsoluto); //Imprime 10
+```
+
+
+
+#### Redondeo y truncado
+
+```javascript
+let numero = 8.5, redondeo, truncado;
+
+//Redondeo -> Toma el valor y lo redondea al numero entero mas cercano.
+redondeo = Math.round(numero);
+console.log(redondeo); //Imprime 9
+
+//Truncado -> Elimina la parte decimal de numero
+truncado = Math.trunc(numero);
+console.log(truncado); //Imprime 8
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# PAGINA 71
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -397,7 +1184,7 @@ console.log(fechaEnMilisegundos); // Devuelve el número de milisegundos corresp
 2. **getDay()**
 
    Retorna el día de la semana (un número entre 0 y 6) para la fecha especificada de acuerdo a la hora local del sistema. En este caso, 0 representa el domingo, 1 el lunes, y así sucesivamente hasta 6 que representa el sábado.
-   
+
    ```javascript
    var fecha = new Date('2024-02-13T12:00:00');
    var diaDeLaSemana = fecha.getDay();
@@ -444,7 +1231,7 @@ console.log(anio); // Devuelve 2024
 
 6. **getMinutes()**
 
-    Retorna los minutos (un número entre 0 y 59) para la fecha especificada de acuerdo a la hora local del sistema.
+   Retorna los minutos (un número entre 0 y 59) para la fecha especificada de acuerdo a la hora local del sistema.
 
    ```javascript
    var fecha = new Date('2024-02-13T12:30:45');
@@ -466,7 +1253,7 @@ console.log(mes); // Devuelve 1, que corresponde a febrero (0 es enero, 1 es feb
 
 ​	
 
-8.  **getSeconds()**
+8. **getSeconds()**
 
    Retorna los segundos (un número entre 0 y 59) para la fecha especificada de acuerdo a la hora local.
 
@@ -799,84 +1586,4 @@ console.log(tiempoEnMilisegundos); // Devuelve el número de milisegundos desde 
     fecha.setYear(99); // Establece el año como 99
     console.log(fecha);
     ```
-
-
-
-### CONDICIONAL "if / else/ else if"
-
-El conficional "if" es un codigo que se ejecuta si la condicion (dentro del parentesis se cumple). 
-
-else -> Se utiliza para ejecutar un bloque de codigo diferente si la condicion "if" es falsa.
-
-else if -> Para comprobar mas de una condicion.
-
-
-
-DATO -> La anidacion de condicionales es cuando agregamos un "if" dentro de otro "if"
-
-```javascript
-const edad = 17;
-const tieneCarnet = true;
-
-if (edad >= 18){
-	if (tieneCarnet){
-		console.log('Puedes conducir');}
-	else{
-		console.log('No puedes conducir');}
-else {
-	console.log('No puedes conducir');}
-}
-```
-
- 
-
-### SWITCH
-
-Estructura de control que nos permite ejecutar diferentes bloques de codigo dependiendo del valor de una expresion.
-
-```javascript
-switch (expresion){
-	case 1:
-		break
-	case 2:
-		break
-	case 3:
-		break
-	default:
-		//codigo a ejecutar si la expresion no coincide con ninguna opcion anterior
-		break
-}
-```
-
-
-
-### Agrupando cases
-
-
-
-```javascript
-const dia = new Date().getDay()
-
-switch (dia){
-	case 0:
-	case 6:
-		console.log("Hoy es fin de semana")
-		break
-	case 1:
-	case 2:
-	case 3: 
-	case 4:
-		console.log("NOooo, a trabajar")
-		break
-	case 5:
-		consle.log("Hoy es viernes")
-		break
-}
-```
-
-
-
-
-
-### El patron switch (true)
 
