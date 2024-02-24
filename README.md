@@ -35,7 +35,7 @@ Num = 1
 
 Num = 2
 
-#### Tipos
+#### Tipos 
 
 - String  ->  Cadena de texto ( 'Hola' / "Hola" / )
 
@@ -258,7 +258,295 @@ Es una función integrada en JavaScript que se utiliza para imprimir mensajes en
 
    
 
+### CONDICIONAL "if / else if/ else"
+
+El conficional "if" es un codigo que se ejecuta si la condicion (dentro del parentesis se cumple). 
+
+else if -> Para comprobar mas de una condicion.
+
+else -> Se utiliza para ejecutar un bloque de codigo diferente si la condicion "if" es falsa.
+
+
+
+DATO -> La anidacion de condicionales es cuando agregamos un "if" dentro de otro "if"
+
+```javascript
+const edad = 17;
+const tieneCarnet = true;
+
+if (edad >= 18){
+	if (tieneCarnet){
+		console.log('Puedes conducir');}
+	else{
+		console.log('No puedes conducir');}
+else {
+	console.log('No puedes conducir');}
+}
+```
+
+
+
+### SWITCH
+
+Estructura de control que nos permite ejecutar diferentes bloques de codigo dependiendo del valor de una expresion.
+
+```javascript
+switch (expresion){
+	case 1:
+		break
+	case 2:
+		break
+	case 3:
+		break
+	default:
+		//codigo a ejecutar si la expresion no coincide con ninguna opcion anterior
+		break
+}
+```
+
+
+
+### Agrupando cases
+
+
+
+```javascript
+const dia = new Date().getDay()
+
+switch (dia){
+	case 0:
+	case 6:
+		console.log("Hoy es fin de semana")
+		break
+	case 1:
+	case 2:
+	case 3: 
+	case 4:
+		console.log("NOooo, a trabajar")
+		break
+	case 5:
+		consle.log("Hoy es viernes")
+		break
+}
+```
+
+
+
+### El patron switch (true)
+
+En lugar de evaluar una expresion, evalua una condicion ignorando por completo el valor de la expresion.
+
+```javascript
+let edad = 25;
+
+switch(true){
+	case(edad >= 18 && edad < 25):
+		console.log("Eres mayor de edad y eres joven");
+	case (edad >= 25 && edad < 40):
+		console.log("Eres mayor de edad y estas en la mejor edad");
+	default:
+		console.log("Eres menor de edad");
+}
+```
+
+
+
+# Ciclos
+
+Nos permite repetir un bloque de codigo mientras la condicion sea verdadera.
+
+#### Tipos de clicos: 
+
+- #### While
+
+  ```javascript
+  while (condicion){ //Bloque de codigo}
+  while (5 > 2) { alert("Hola");}
+  ```
+
   
+
+- #### do while 
+
+  El ciclo "do while" ejecuta al menos una vez su bloque de codigo debido a que la condicion a revisar se encuentra al final del bloque.
+
+  ```javascript
+  do {} while(condicion);
+  
+  let conadot = 0, repeticiones = 5;
+  
+  do{
+      console.log(contador++);
+  } while(contador <= repeticiones);
+  ```
+
+  
+
+- #### for
+
+  Especificamos cuantas veces queremos repetir su bloque de codigo.
+
+  ```javascript
+  for (declaracion de variales (tipo contador); condicion; incremento de contadores){
+      //BLoque de codigo
+  }
+  ```
+
+  
+
+## Continue y break
+
+Cuando el interprete de JavaScript encuentra la palabra "continue", salta a la siguiente iteracion del bucle, y la palabra "break" rompe por completo el ciclo.
+
+```javascript
+let cuentaAtras = 10;
+
+while (cuentaAtras > 0){
+	cuentaAtras = cuentaAtras - 1
+	
+	if (cuentaAtras % 2 === 0){
+		continue;
+	}
+	
+	console.log(cuentaAtras);
+}
+```
+
+
+
+## FUNCIONES
+
+Bloque de codigo reutilizable que nos va a permitir realizar una tarea en particular. Puede tener parametros de entrada y tambien puede devolver un valor de salida, pero estos son opcionales.
+
+```javascript
+function suma(parametros){ 
+    //Cuerpo de la funcion (bloque de codigo); return (valor de retorno) 
+}
+
+//Declaracion
+function imprimir( a (paramentro)){
+    console.log( a (parametro));
+}
+
+//Llamado funcion
+imprimir(100 (Argumento)); 
+```
+
+
+
+#### *Diferencia entre Parametros y Argumentos en una funcion*
+
+- Parametro -> Es la variable que se define en la funcion al momento de la declaracion de la funcion
+- Argumento -> Es la variable que se le pasa a la funcion cuando la llamamos
+
+
+
+#### Diferencia entre procedimiento y funcion
+
+- Procedimiento -> Cuando lo declaramos no retorna ningun tipo de informacion al programa principal.
+- Funcion ->Cuando lo declaramos retorna informacion al programa principal.
+
+
+
+#### TIPOS DE FUNCIONES
+
+- Funciones definidas por el usuario
+- Funciones incorporadas (Built - in)
+
+
+
+## FUNCIONES RECURSIVAS
+
+Basicamente son las funciones que se mandan a llamar asi mismas. 
+
+```javascript
+function funcionRecursiva(n){
+	if (n == 1){
+		console.log("hola");
+    } else{
+		console.log(n);
+		funcionRecursiva(n-1);
+	}
+}
+
+funcionRecursiva(15);
+```
+
+
+
+## FUNCIONES FLECHA (ARROW)
+
+Proporcionan una sintaxis más concisa y una manera más simple de definir funciones en comparación con las funciones tradicionales.
+
+La sintaxis básica de una función flecha es la siguiente:
+
+```javascript
+let nombreFuncion = (parametro1, parametro2) => {
+    // Cuerpo de la función
+};
+```
+
+
+
+## MATH
+
+Es un objeto incorporado que proporciona métodos y constantes para realizar operaciones matemáticas. Este objeto no puede ser instanciado; es simplemente un objeto estático. Proporciona funcionalidades para operaciones matemáticas comunes, como redondeo, funciones trigonométricas, generación de números aleatorios, entre otros.
+
+
+
+- **Generar un número aleatorio entre 0 y 1**:
+
+```javascript
+let numeroAleatorio = Math.random();
+console.log(numeroAleatorio);
+```
+
+
+
+- **Redondear un número al entero más cercano**:
+
+```javascript
+let numero = 3.7;
+let numeroRedondeado = Math.round(numero);
+console.log(numeroRedondeado); // Salida: 4
+```
+
+
+
+- **Obtener la raíz cuadrada de un número**:
+
+```javascript
+let numero = 25;
+let raizCuadrada = Math.sqrt(numero);
+console.log(raizCuadrada); // Salida: 5
+```
+
+
+
+- **Calcular el seno, coseno y tangente de un ángulo en radianes**:
+
+```javascript
+let angulo = Math.PI / 4; // 45 grados en radianes
+let seno = Math.sin(angulo);
+let coseno = Math.cos(angulo);
+let tangente = Math.tan(angulo);
+console.log(seno, coseno, tangente);
+```
+
+
+
+## Hoisting
+
+Podemos usar una variable y despues declararla. (solo con var)
+
+```javascript
+x = 10;
+console.log(x);
+
+var x;
+```
+
+
 
 ## 														ARRAYS (listas)
 
@@ -370,22 +658,43 @@ for (let i = 0; i < numerosArreglo.length, i++){
   console.log(numeros); // imprime [1, 2, 4, 5]
   ```
 
-- `indexOf()`:  
+- `indexOf()`:  Metodo que retorna el primer indice en el que se puede encontrar un elemento dado en el array, o retorna -1 si el elemento no esta presente.
 
   ```javascript
+  // Definimos un array de frutas
+  const frutas = ['manzana', 'banana', 'pera', 'uva', 'banana'];
   
+  // Usamos indexOf para encontrar el índice de 'pera'
+  const indicePera = frutas.indexOf('pera');
+  console.log("El índice de 'pera' es:", indicePera); // Output: El índice de 'pera' es: 2
   ```
 
-- `forEach()`: 
+- `forEach()`: Metodo que ejecuta la funcion indicada una vez por cada elemento del array.
 
   ```javascript
+  // Definimos un array de números
+  const numeros = [1, 2, 3, 4, 5];
   
+  // Usamos forEach para imprimir cada número del array
+  numeros.forEach(function(numero) {
+      console.log(numero);
+  });
+  
+  //En este ejemplo, forEach() recorre cada elemento del array numeros y ejecuta la función proporcionada una vez por cada elemento. La función recibe un parámetro (en este caso, llamado numero) que representa el elemento actual del array en cada iteración. Dentro de la función, imprimimos cada número utilizando console.log().
   ```
 
-- `join()`: 
+- `join()`: Este metodo une todos los elemntos de una matriz en una cadena y devuelve esta cadena.
 
   ```javascript
+  // Definimos un array de frutas
+  const frutas = ['manzana', 'banana', 'pera', 'uva'];
   
+  // Usamos join para unir los elementos del array en una cadena separados por comas
+  const cadenaFrutas = frutas.join(', ');
+  
+  console.log(cadenaFrutas); // Output: manzana, banana, pera, uva
+  
+  //En este ejemplo, hemos creado un array llamado frutas que contiene diferentes frutas. Luego, usamos el método join(', ') para unir los elementos del array en una cadena, donde cada elemento está separado por una coma seguida de un espacio. El resultado es una cadena que contiene todas las frutas separadas por comas.
   ```
 
 
@@ -440,6 +749,329 @@ for(let ren = 0; ren < matriz.length; ren++){
 
 
 
+## OPERADOR TERNARIO
+
+```javascript
+//(condicion) ? bloque por si se cumple : bloque por si no se cumple;
+let a = 3;
+(a > 9) ? console.log(++a) : a--;
+// resultado -> a = 2
+```
+
+
+
+
+
+##  STRINGS (Cadenas)
+
+
+
+#### Funciones Incorporadas
+
+```javascript
+//Una cadena es inmutable y es un array.
+let cadena1 = "Hola"
+
+//obtener el largo de una cadena de texto
+console.log(cadena1.length); //Imprime 4
+
+//Recorrer cadena
+for (let i = 0; i < cadena1.length; i++){
+    console.log(cadena[i]); //Imprime H,o,l,a
+}
+```
+
+
+
+#### Sub-Cadenas 
+
+Extracto de caracteres de la cadena original
+
+```javascript
+let cadena3 = "Hola Mundo";
+
+let cadena1 = cadena3.substring(0,4);
+
+console.log(cadena1); //Imprime Hola
+```
+
+
+
+#### Concatenacion de Cadenas
+
+Unir dos o mas cadenas en una sola
+
+```javascript
+let cadena1 = "Hola";
+let cadena2= "Mundo";
+
+let cadena = cadena1 + cadena2;
+console.log(cadena); //Imprime HolaMundo
+
+let cadena = cadena1 + '' + cadena2;
+console.log(cadena); //Imprime Hola Mundo
+
+//Tambien podemos utilizar String Interpolation
+let cadena = `${cadena1} ${cadena2}`;
+console.log(cadena); //Imprime Hola Mundo
+```
+
+<!--La sobrecarga de operadores, también conocida como "operator overloading" en inglés, es una característica que permite a los programadores definir el comportamiento de los operadores en sus propios tipos de datos personalizados. Sin embargo, en JavaScript, a diferencia de otros lenguajes de programación como C++ o Python, no hay soporte nativo para la sobrecarga de operadores.-->
+
+<!--En lenguajes como C++ o Python, la sobrecarga de operadores permite definir cómo los operadores como `+`, `-`, `*`, `/`, entre otros, deben funcionar para tipos de datos personalizados como clases. Esto significa que puedes definir cómo se suman, restan, multiplican o dividen objetos de tus clases.-->
+
+
+
+#### Dividir una cadena en partes
+
+```javascript
+let cadena3 = "Hola Mundo";
+
+let cadena1 = cadena3.split(' ', 1); //El numero 3 es el limitante de Cada PALABRA.
+
+console.table(cadena1); //Imprime 'Hola'
+```
+
+
+
+# RegExp
+
+Las **expresiones regulares** (RegExp) son un sistema para buscar, capturar o remplazar texto utilizando patrones.  
+
+- [ ] `patron.test(texto)`: Utilizamos el método `test()` del objeto RegExp para verificar si el patrón coincide con alguna parte del texto. Devolverá `true` porque hay al menos una ocurrencia de "hola" en el texto, independientemente de las mayúsculas y minúsculas.
+
+- [ ] `texto.match(patron)`: Utilizamos el método `match()` de la cadena de texto para encontrar todas las ocurrencias del patrón en el texto. Devuelve un array con todas las ocurrencias encontradas. En este caso, devuelve `["Hola", "Hola"]`, ya que encontró dos ocurrencias de "Hola" en el texto.
+
+  
+
+- `/` **Coincidencia de una cadena específica**:
+
+```javascript
+const patron = /hola/;
+const texto = "¡Hola mundo!";
+console.log(patron.test(texto)); // Devuelve false
+console.log(texto.match(patron)); // El método match() se aplica al texto y se le pasa el patrón como argumento.
+```
+
+1. En este ejemplo, la expresión regular `/hola/` busca la cadena "hola" dentro del texto.
+
+2. La función `test()` del objeto RegExp verifica si la cadena contiene la expresión regular y devuelve `true` si se encuentra una coincidencia, de lo contrario, devuelve `false`.
+
+
+
+- **`/` , `i` Coincidencia de una cadena específica (ignorando mayúsculas y minúsculas)**:
+
+```javascript
+const patron = /hola/i; // 'i' indica que la búsqueda es insensible a mayúsculas y minúsculas
+const texto = "¡Hola Mundo!";
+console.log(patron.test(texto)); // Devuelve true
+console.log(texto.match(patron));
+```
+
+1. La `i` después de la expresión regular `/hola/` indica que la búsqueda es insensible a mayúsculas y minúsculas.
+
+2. Por lo tanto, la expresión regular coincidirá con "Hola" aunque esté en mayúscula.
+
+
+
+- **`^` Coincidencia de un patrón al inicio de una cadena**:
+
+```javascript
+const patron = /^hola/;
+const texto = "¡Hola mundo!";
+console.log(patron.test(texto)); // Devuelve false
+console.log(texto.match(patron));
+```
+
+1. El `^` al principio de la expresión regular indica que la cadena debe comenzar con "hola".
+
+2. En este caso, como la cadena comienza con un signo de exclamación, no hay coincidencia y devuelve `false`.
+
+
+
+- **`^` , `i` Coincidencia de un patrón al inicio de una cadena  (ignorando mayúsculas y minúsculas)**:**:
+
+```javascript
+const patron = /^hola/i;
+const texto = "¡Hola mundo!";
+console.log(patron.test(texto)); // Devuelve false
+console.log(texto.match(patron)); //Devuelve null
+```
+
+
+
+- **`g `, ` i` Todas las oincidencia de un patrón de una cadena  (ignorando mayúsculas y minúsculas)**:**:
+
+```javascript
+const patron = /hola/gi;
+const texto = "¡Hola Mundo! Hola a todos.";
+
+console.log(patron.test(texto)); // Devuelve true
+console.log(texto.match(patron)); // Devuelve ["Hola", "Hola"]
+```
+
+1. `g`: Indica que buscamos todas las ocurrencias del patrón en el texto (no solo la primera).
+
+2. `i`: Indica que la búsqueda no distingue entre mayúsculas y minúsculas (case-insensitive).
+
+
+
+- **Coincidencia de un patrón al final de una cadena**:
+
+```javascript
+const patron = /mundo!$/;
+const texto = "¡Hola mundo!";
+console.log(patron.test(texto)); // Devuelve true
+```
+
+- El `$` al final de la expresión regular indica que la cadena debe terminar con "mundo!".
+
+- Como la cadena termina con "mundo!", devuelve `true`.
+
+  
+
+- **`[] `Coincidencia de uno de varios caracteres**:
+
+```javascript
+const patron = /[aeiou]/;
+const texto = "Hola mundo!";
+console.log(patron.test(texto)); // Devuelve true
+```
+
+- La expresión regular `[aeiou]` coincide con cualquier vocal (a, e, i, o, u) dentro del texto.
+- Como el texto contiene la letra 'o', devuelve `true`.
+
+
+
+- **`[] `, ` ^` Coincidencia de uno de varios caracteres**:
+
+```javascript
+const patron = /[^aeiou]/;
+const texto = "Hola mundo!";
+console.log(patron.test(texto)); // Devuelve true porque estan las letras "H, l, m, n, d y !"
+```
+
+- `[^aeiou]`: Esta parte del patrón es una clase de caracteres negados. El `^` dentro de los corchetes indica que la clase de caracteres negados coincide con cualquier carácter que no esté dentro de la lista especificada. En este caso, la lista es `aeiou`, por lo que esta expresión regular coincidirá con cualquier carácter que no sea una vocal minúscula.
+
+  
+
+- **`[] `, ` m`  Coincidencia de un rango de caracteres**:
+
+```javascript
+const patron = /[a-z]/m;
+const texto = "Hola mundo!";
+console.log(patron.test(texto)); // Devuelve true
+```
+
+- La expresión regular `[a-z]` coincide con cualquier letra minúscula del alfabeto inglés.
+
+- Como el texto contiene la letra 'o', devuelve `true`.
+
+- `m`  Indica "multilinea". Este modificador afecta el comportamiento de los metacaracteres `^` y `$` para que coincidan con el comienzo y el final de cada línea en lugar del comienzo y el final del texto completo.
+
+  
+
+- **`[] `, ` m` busca cualquier dígito del 0 al 6 en el texto**
+
+```javascript
+javascriptCopy codeconst patron = /[0-6]/m;
+const texto = "¡Hola hola!";
+console.log(patron.test(texto)); // Devuelve false
+console.log(texto.match(patron)); // El método match() se aplica al texto y se le pasa el patrón como argumento.
+```
+
+- `const patron = /[0-6]/m;`: Aquí estamos creando una expresión regular que busca cualquier dígito del 0 al 6. La expresión regular incluye el modificador `m`, que trata de hacer coincidir el principio y el final de cada línea individual, en lugar del principio y el final de todo el texto.
+
+
+
+## CONVERSION DE DATOS 
+
+
+
+#### Convertir una numero a string
+
+```javascript
+let a = 10, b = 20;
+
+let concatenacion = a.toString() + b.toString();
+
+console.log(concatenacion); // Imprimirá "1020"
+```
+
+
+
+#### Convertir una string a numero
+
+```javascript
+let a = "10", b = "20";
+
+let concatenacion = Number(a) + Number(b);
+
+console.log(concatenacion.toString()) //Imprime 30
+
+//toString devuelve una cadena con el numero en la base que determinemos
+
+let concatenacion = paseFloat(a) + parseFloat(b);
+//CONVERTIRLO A FLOTANTE
+let concatenacion = parseInt(a) + parseInt(b);
+//CONVENTIRLO A ENTERO
+```
+
+
+
+#### Valor absoluto de un numero
+
+```javascript
+//Valor absoluto
+
+let numero = -10;
+let valorAbsoluto = Math.abs(numero);
+
+console.log(valorAbsoluto); //Imprime 10
+```
+
+
+
+#### Redondeo y truncado
+
+```javascript
+let numero = 8.5, redondeo, truncado;
+
+//Redondeo -> Toma el valor y lo redondea al numero entero mas cercano.
+redondeo = Math.round(numero);
+console.log(redondeo); //Imprime 9
+
+//Redondeo -> Devuelve el maximo entero menor o igual a un numero.
+redondeo = Math.floor(numero);
+console.log(redondeo); //Imprime 9
+
+//Truncado -> Elimina la parte decimal de numero
+truncado = Math.trunc(numero);
+console.log(truncado); //Imprime 8
+```
+
+
+
+## 	UBICACION ETIQUETA SCRIPT
+
+
+
+```html
+<!DOCTYPE html>
+<html lang="sp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Script src="js/app.js" defer></script>
+    <title>JavaScript</title>
+</head>
+<body>
+</body>
+</html>
+```
+
+
+
 ## OBJETOS (diccionarios)
 
 Los objetos tienen distintas propiedades y metodos.
@@ -486,9 +1118,20 @@ for( let i in persona){
 	console.log(persona[i]); // -> acceder a los valores de cada objeto
 }
 
+//ACCEDER A PROPIEDADES
+console.log(persona.nombre); // Imprime "Michelle"
+console.log(persona["edad"]); // Imprime 28
+
+//OBTENER LAS PROPIEDADES DEL OBJETO
+const propiedades = Object.getOwnPropertyNames(persona);
+console.log({propiedades})
+
+//OBTENER LOS VALORES DEL OBJETO
+const valores = Object.values(persona);
+console.log({propiedades,valores})
+
 //AGREGAR UNA NUEVA PROPIEDAD (KEY)
 persona.tel = '34553543'; //( "tel" es el nombre de la nueva propiedad o llave)
-
 
 //MODIFICAR UNA PROPIEDAD (KEY)
 persona.tel = '45743245';
@@ -512,6 +1155,35 @@ let personaString = JSON.stringify ( persona );
 //Metodo JSON.stringify nos convierte nuestro objeto a una cadena de texto.
 //El metodo Stringify lo que hace es convertir cada uno de las propiedades de nuestro objeto a una cadena. 
 ```
+
+
+
+### BLOQUEO DE PROPIEDADES
+
+El bloqueo de propiedades, también conocido como "Object.freeze()" en JavaScript, es una característica que permite hacer que un objeto sea inmutable, es decir, que sus propiedades no puedan ser modificadas, añadidas o eliminadas una vez que el objeto ha sido congelado.
+
+El bloqueo de propiedades es útil en situaciones donde se desea asegurar que un objeto no sea modificado accidentalmente después de ser creado. Algunos casos de uso comunes del bloqueo de propiedades incluyen:
+
+1. **Inmutabilidad de datos**: Al congelar un objeto, se garantiza que sus propiedades no cambiarán, lo que puede ser útil para mantener la integridad de los datos y prevenir errores inesperados en el código.
+2. **Seguridad**: En entornos donde la seguridad es importante, como en aplicaciones web, el bloqueo de propiedades puede ayudar a prevenir la manipulación maliciosa de datos.
+3. **Prevenir modificaciones accidentales**: En proyectos grandes o colaborativos, el bloqueo de propiedades puede ayudar a evitar que otras partes del código modifiquen accidentalmente objetos compartidos, lo que podría causar efectos secundarios no deseados.
+
+Para congelar un objeto en JavaScript, se utiliza el método `Object.freeze()`. Por ejemplo:
+
+```javascript
+const persona = {
+  nombre: "Michelle",
+  edad: 28
+};
+
+Object.freeze(persona);
+
+// Intentar modificar una propiedad congelada no tendrá efecto
+persona.nombre = "Carlos";
+console.log(persona.nombre); // Imprimirá "Michelle"
+```
+
+En este ejemplo, `Object.freeze(persona)` congela el objeto `persona`, por lo que cualquier intento de modificar sus propiedades será ignorado. Esto ayuda a garantizar que el objeto `persona` permanezca inmutable una vez que ha sido creado.
 
 
 
@@ -602,6 +1274,86 @@ Persona.prototype.tel = '24534635'; //"tel" es la llave
 console.log(objeto);
 
 ```
+
+
+
+## SPREAD (objetos - arrays) 
+
+Se utiliza para descomponer elementos de un iterable (como array o un objeto) y expandirlos en lugares donde se esperan argumetos o elementos separados.
+
+- Concatenar arreglos
+
+  ```javascript
+  let array1 = [1,2,3];
+  let array2 = [4,5,6];
+    
+  function arrays(a,b) {
+      const array3 = [...a,...b]; 
+      return array3
+  }
+    
+  console.log (arrays(array1,array2))
+  ```
+
+
+
+- Clonar un objeto con Spread y modificar propiedad
+
+  ```javascript
+  let objeto1 = {nombre:'angel',apellido:'ronaldo'};
+  let objeto2 = {...objeto1};
+    
+  objeto2.nombre = 'ana'; 
+  console.log({objeto1, objeto2});
+  ```
+
+
+
+- Sumar numeros con funcion flecha
+
+  ```javascript
+  const suma = (...numeros) => {
+      return numeros.reduce((total,num) => total + sum, 0);
+  }
+  ```
+
+
+
+- Combinar objetos con Spread y funcion flecha
+
+  ```javascript
+  let array1 = {nombre:'alan',ciudad:'bogota',direccion:'san miguel'};
+  let array2 = {nombre1:'angel',ciudad1:'bucaramanga'};
+    
+  let arrays = (a,b) => {
+    const array3 = {...a,...b}
+    return array3
+  }
+    
+  console.log(arrays(array1,array2));
+  ```
+
+  
+
+# DESTRUCTURACION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -700,6 +1452,7 @@ console.log(array.nombre);
 
 
 
+### 
 
 
 
@@ -710,312 +1463,14 @@ console.log(array.nombre);
 
 
 
-### CONDICIONAL "if / else if/ else"
 
-El conficional "if" es un codigo que se ejecuta si la condicion (dentro del parentesis se cumple). 
 
-else if -> Para comprobar mas de una condicion.
 
-else -> Se utiliza para ejecutar un bloque de codigo diferente si la condicion "if" es falsa.
 
 
 
-DATO -> La anidacion de condicionales es cuando agregamos un "if" dentro de otro "if"
 
-```javascript
-const edad = 17;
-const tieneCarnet = true;
-
-if (edad >= 18){
-	if (tieneCarnet){
-		console.log('Puedes conducir');}
-	else{
-		console.log('No puedes conducir');}
-else {
-	console.log('No puedes conducir');}
-}
-```
-
- 
-
-### SWITCH
-
-Estructura de control que nos permite ejecutar diferentes bloques de codigo dependiendo del valor de una expresion.
-
-```javascript
-switch (expresion){
-	case 1:
-		break
-	case 2:
-		break
-	case 3:
-		break
-	default:
-		//codigo a ejecutar si la expresion no coincide con ninguna opcion anterior
-		break
-}
-```
-
-
-
-### Agrupando cases
-
-
-
-```javascript
-const dia = new Date().getDay()
-
-switch (dia){
-	case 0:
-	case 6:
-		console.log("Hoy es fin de semana")
-		break
-	case 1:
-	case 2:
-	case 3: 
-	case 4:
-		console.log("NOooo, a trabajar")
-		break
-	case 5:
-		consle.log("Hoy es viernes")
-		break
-}
-```
-
-
-
-### El patron switch (true)
-
-
-
-### OPERADOR TERNARIO
-
-```javascript
-//(condicion) ? bloque por si se cumple : bloque por si no se cumple;
-let a = 3;
-(a > 9) ? console.log(++a) : a--;
-// resultado -> a = 2
-```
-
-
-
-## Ciclos
-
-Nos permite repetir un bloque de codigo mientras la condicion sea verdadera.
-
-#### Tipos de clicos: 
-
-- While
-
-  ```javascript
-  while (condicion){ //Bloque de codigo}
-  while (5 > 2) { alert("Hola");}
-  ```
-
-  
-
-- do while 
-
-  El ciclo "do while" ejecuta al menos una vez su bloque de codigo debido a que la condicion a revisar se encuentra al final del bloque.
-
-  ```javascript
-  do {} while(condicion);
-  
-  let conadot = 0, repeticiones = 5;
-  
-  do{
-      console.log(contador++);
-  } while(contador <= repeticiones);
-  ```
-
-  
-
-- for
-
-  Especificamos cuantas veces queremos repetir su bloque de codigo.
-
-  ```javascript
-  for (declaracion de variales (tipo contador); condicion; incremento de contadores){
-      //BLoque de codigo
-  }
-  ```
-
-  
-
-## FUNCIONES
-
-Bloque de codigo reutilizable que nos va a permitir realizar una tarea en particular. Puede tener parametros de entrada y tambien puede devolver un valor de salida, pero estos son opcionales.
-
-```javascript
-function suma(parametros){ 
-    //Cuerpo de la funcion (bloque de codigo); return (valor de retorno) 
-}
-
-//Declaracion
-function imprimir( a (paramentro)){
-    console.log( a (parametro));
-}
-
-//Llamado funcion
-imprimir(100 (Argumento)); 
-```
-
-
-
-#### *Diferencia entre Parametros y Argumentos en una funcion*
-
-- Parametro -> Es la variable que se define en la funcion al momento de la declaracion de la funcion
-- Argumento -> Es la variable que se le pasa a la funcion cuando la llamamos
-
-
-
-#### Diferencia entre procedimiento y funcion
-
-- Procedimiento -> Cuando lo declaramos no retorna ningun tipo de informacion al programa principal.
-- Funcion ->Cuando lo declaramos retorna informacion al programa principal.
-
-
-
-#### TIPOS DE FUNCIONES
-
-- Funciones definidas por el usuario
-- Funciones incorporadas (Built - in)
-
-
-
-## FUNCIONES RECURSIVAS
-
-Basicamente son las funciones que se mandan a llamar asi mismas. 
-
-```javascript
-function funcionRecursiva(n){
-	if (n == 1){
-		console.log("hola");
-    } else{
-		console.log(n);
-		funcionRecursiva(n-1);
-	}
-}
-
-funcionRecursiva(15);
-```
-
-
-
-## FUNCIONES INCORPORADAS CON CADENAS
-
-```javascript
-//Una cadena es inmutable y es un array.
-let cadena1 = "Hola"
-
-//obtener el largo de una cadena de texto
-console.log(cadena1.length); //Imprime 4
-
-//Recorrer cadena
-for (let i = 0; i < cadena1.length; i++){
-    console.log(cadena[i]); //Imprime H,o,l,a
-}
-```
-
-
-
-#### Sub-Cadenas 
-
-Extracto de caracteres de la cadena original
-
-```javascript
-let cadena3 = "Hola Mundo";
-
-let cadena1 = cadena3.substring(0,4);
-
-console.log(cadena1); //Imprime Hola
-```
-
-
-
-#### Concatenacion de Cadenas
-
-Unir dos o mas cadenas en una sola
-
-```javascript
-let cadena1 = "Hola";
-let cadena2= "Mundo";
-
-let cadena = cadena1 + cadena2;
-console.log(cadena); //Imprime HolaMundo
-
-let cadena = cadena1 + '' + cadena2;
-console.log(cadena); //Imprime Hola Mundo
-
-//Tambien podemos utilizar String Interpolation
-
-let cadena = `${cadena1} ${cadena2}`;
-console.log(cadena); //Imprime Hola Mundo
-```
-
-<!--La sobrecarga de operadores, también conocida como "operator overloading" en inglés, es una característica que permite a los programadores definir el comportamiento de los operadores en sus propios tipos de datos personalizados. Sin embargo, en JavaScript, a diferencia de otros lenguajes de programación como C++ o Python, no hay soporte nativo para la sobrecarga de operadores.-->
-
-<!--En lenguajes como C++ o Python, la sobrecarga de operadores permite definir cómo los operadores como `+`, `-`, `*`, `/`, entre otros, deben funcionar para tipos de datos personalizados como clases. Esto significa que puedes definir cómo se suman, restan, multiplican o dividen objetos de tus clases.-->
-
-
-
-#### Convertir una numero a string
-
-```javascript
-let a = 10, b = 20;
-
-let concatenacion = a.toString() + b.toString();
-
-console.log(concatenacion) //Imprime 1020
-```
-
-
-
-#### Valor absoluto de un numero
-
-```javascript
-//Valor absoluto
-
-let numero = -10;
-let valorAbsoluto = Math.abs(numero);
-
-console.log(valorAbsoluto); //Imprime 10
-```
-
-
-
-#### Redondeo y truncado
-
-```javascript
-let numero = 8.5, redondeo, truncado;
-
-//Redondeo -> Toma el valor y lo redondea al numero entero mas cercano.
-redondeo = Math.round(numero);
-console.log(redondeo); //Imprime 9
-
-//Truncado -> Elimina la parte decimal de numero
-truncado = Math.trunc(numero);
-console.log(truncado); //Imprime 8
-
-
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# PAGINA 71
+# 
 
 
 
