@@ -23,7 +23,7 @@
 
 ## Enlazar JS 
 
-<Script src="js/main.js"></script>
+<Script src="js/app.js" defer></script>
 
 
 
@@ -1277,7 +1277,61 @@ console.log(objeto);
 
 
 
-## SPREAD (objetos - arrays) 
+#### METODO CALL
+
+Nos va a permitir llamar un metodo que esta definidio en un objeto en desde otro objeto.
+
+```javascript
+let persona1 = {
+	nombre: 'juan',
+	Apellido: 'perez',
+	nombreCompleto: function(titulo, tel){
+		return titulo + this.nombre + this.Apellido + tel;
+	}
+}
+
+let persona2 = {
+	nombre: 'Carlos',
+	Apellido: 'Lara'
+}
+
+//Vamos a hacer uso del metodo "nombreCompleto" que se encuentra en el objeto "persona1", pero con los datos de la persona2
+
+console.log( persona1.nombreCompleto.call( persona2, 'Ing', '4757634'));
+//Imprime Ing Carlos Lara 4757634
+```
+
+
+
+#### METODO APPLY
+
+```javascript
+let persona1 = {
+	nombre: 'juan',
+	Apellido: 'perez',
+	nombreCompleto: function(titulo, tel){
+		return titulo + this.nombre + this.Apellido + tel;
+	}
+}
+
+let persona2 = {
+	nombre: 'Carlos',
+	Apellido: 'Lara'
+}
+
+//Vamos a hacer uso del metodo "nombreCompleto" que se encuentra en el objeto "persona1", pero con los datos de la persona2
+
+let arreglo = ['ing','7368362387'];
+
+console.log( persona1.nombreCompleto.apply( persona2, arreglo));
+//Imprime Ing Carlos Lara 4757634
+```
+
+
+
+
+
+# SPREAD (objetos - arrays) 
 
 Se utiliza para descomponer elementos de un iterable (como array o un objeto) y expandirlos en lugares donde se esperan argumetos o elementos separados.
 
@@ -1337,81 +1391,452 @@ Se utiliza para descomponer elementos de un iterable (como array o un objeto) y 
 
 # DESTRUCTURACION
 
+La "destructuración" en JavaScript es una característica que te permite extraer valores de arrays o propiedades de objetos en variables individuales de una manera más concisa.
 
 
 
+### Destructuración de Arrays:
+
+En la destructuración de arrays, puedes extraer valores de un array y asignarlos a variables individuales.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### METODO CALL
-
-Nos va a permitir llamar un metodo que esta definidio en un objeto en desde otro objeto.
 
 ```javascript
-let persona1 = {
-	nombre: 'juan',
-	Apellido: 'perez',
-	nombreCompleto: function(titulo, tel){
-		return titulo + this.nombre + this.Apellido + tel;
-	}
-}
+// Array de datos
+const numbers = [1, 2, 3, 4, 5];
 
-let persona2 = {
-	nombre: 'Carlos',
-	Apellido: 'Lara'
-}
+// Destructuración de array
+const [a, b, c, d, e] = numbers;
 
-//Vamos a hacer uso del metodo "nombreCompleto" que se encuentra en el objeto "persona1", pero con los datos de la persona2
+console.log(a); // Output: 1
+console.log(b); // Output: 2
+console.log(c); // Output: 3
+console.log(d); // Output: 4
+console.log(e); // Output: 5
+```
 
-console.log( persona1.nombreCompleto.call( persona2, 'Ing', '4757634'));
-//Imprime Ing Carlos Lara 4757634
+También puedes ignorar ciertos valores utilizando comas sin asignarlos a variables:
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+const [a, , c] = numbers;
+
+console.log(a); // Output: 1
+console.log(c); // Output: 3
 ```
 
 
 
-### METODO APPLY
+### Destructuración de Objetos:
+
+En la destructuración de objetos, puedes extraer propiedades de un objeto y asignarlas a variables con los mismos nombres.
 
 ```javascript
-let persona1 = {
-	nombre: 'juan',
-	Apellido: 'perez',
-	nombreCompleto: function(titulo, tel){
-		return titulo + this.nombre + this.Apellido + tel;
-	}
-}
+// Objeto
+const person = {
+  name: 'John',
+  age: 30,
+  city: 'New York'
+};
 
-let persona2 = {
-	nombre: 'Carlos',
-	Apellido: 'Lara'
-}
+// Destructuración de objeto
+const { name, age, city } = person;
 
-//Vamos a hacer uso del metodo "nombreCompleto" que se encuentra en el objeto "persona1", pero con los datos de la persona2
-
-let arreglo = ['ing','7368362387'];
-
-console.log( persona1.nombreCompleto.apply( persona2, arreglo));
-//Imprime Ing Carlos Lara 4757634
+console.log(name); // Output: 'John'
+console.log(age); // Output: 30
+console.log(city); // Output: 'New York'
 ```
+
+También puedes asignar valores predeterminados en caso de que una propiedad no exista:
+
+```javascript
+const person = {
+  name: 'John',
+  age: 30
+};
+
+const { name, age, city = 'New York' } = person;
+
+console.log(name); // Output: 'John'
+console.log(age); // Output: 30
+console.log(city); // Output: 'New York' (valor predeterminado)
+```
+
+Otros conceptos
+
+```javascript
+const person = {
+  name: 'John',
+  age: 30,
+  city: 'New York'
+};
+
+//Rest en la destructuracion para recoger el resto de las propiedades de un objeto
+const{name, ...resto} = person;
+console.log(resto);
+console.log(name);
+
+//Destructuracion en argumentos de funciones
+function saludar({name,age,city}){
+    console.log(`${name} tiene ${age} años y vive en ${city}.`);
+}
+saludar(person);
+```
+
+
+
+### Destructuración Anidada:
+
+La destructuración también se puede utilizar en objetos y arrays anidados para acceder a valores más profundamente anidados.
+
+```javascript
+const person = {
+  name: 'John',
+  age: 30,
+  address: {
+    city: 'New York',
+    country: 'USA'
+  }
+};
+
+const { name, age, address: { city, country } } = person;
+
+console.log(name); // Output: 'John'
+console.log(age); // Output: 30
+console.log(city); // Output: 'New York'
+console.log(country); // Output: 'USA'
+```
+
+
+
+### Destructuración Anidada:
+
+```javascript
+const person = {
+  name: 'John',
+  age: 30,
+  city: 'New York'
+};
+
+const{ name: Nombre, age:Edad, city: Ciudad} = person;
+
+console.log(Nombre);
+console.log(Edad);
+console.log(Ciudad);
+console.log(person.name + Edad);
+```
+
+
+
+# ASINCRONIA
+
+Significa que el código puede continuar ejecutándose mientras se espera que ocurran ciertas operaciones, como solicitudes de red, lecturas de archivos, temporizadores, entre otros.
+
+
+
+# CALLBACK
+
+Los callbacks son funciones que se pasan como argumentos a otras funciones y se ejecutan después de que una operación asíncrona se haya completado o cuando ocurre un evento. Los callbacks son una forma común de manejar la asincronía en JavaScript, pero pueden conducir a lo que se conoce como "callback hell" cuando se anidan demasiado.
+
+```javascript
+function imprimir(mensaje){
+    console.log(mensaje);
+}
+
+function sumar(op1, op2, functionCallback){
+    let res = op1 + op2;
+    functionCallback(res);
+}
+
+sumar(5,3,imprimir);
+```
+
+
+
+# PROMESAS
+
+Es un codigo que tiene varios estados. Entonces, nostros lanzamos una peticion donde se ejecuta un codigo, en dado caso que la promesa se resuelva correctamente mandamos a llamar el caso ".then()" y en caso de que no se resuelva llamamos a ".catch()". Entonces es asi:
+
+Mientras la promesa no haya terminado de ejecutar su codigo esta en "PENDING" que es estado independiente. Una vez termine de ejecutarse esta tiene dos caminos, el primer camino es ".then()" que es cuando la promesa se resolvio correstamente, y el otro camino es ".catch()" que es cuando la promesa tuvo algun error y es rechazado.  
+
+```javascript
+//Sintaxis basica para crear una promesa
+
+let miPromesa = new Promise((resuelto, rechazado) => { 
+    let expresion = true;
+    
+    if (expresion){
+        	resuelto('Resolvio Correcto');
+    }else rechazado('se produjo un error');
+});
+
+miPromesa.then(valor => console.log(valor)).catch(error => console.log(error));
+```
+
+Una Promesa,  esta promesa toma una **función flecha (resuelto, rechazado) => { }""**  como argumento, que a su vez toma dos parámetros: `resuelto`  y `rechazado`. Estos parámetros son *funciones callback* que se utilizan para resolver o rechazar la promesa, respectivamente.                                                                 Dentro de la función, hay una expresión `if` que determina si la promesa se resolverá o se rechazará. En este caso, `expresion` es verdadera, por lo que la promesa se resuelve con el valor `'Resolvio Correcto'`. En caso contrario, se rechaza con el mensaje `'se produjo un error'`. 
+
+
+
+#### Función SetTimeout y Promesas en JavaScript
+
+```javascript
+let promesa = new Promise((resolver) => {
+    setTimeout( () => { resolver('saludos'), 3000});
+});
+```
+
+
+
+###### SetTimeout
+
+```javascript
+javascriptCopy codeconsole.log('Inicio');
+
+setTimeout(function() {
+    console.log('Han pasado 2 segundos');
+}, 2000);
+
+console.log('Fin');
+```
+
+En este ejemplo, verás que "Inicio" se imprimirá primero, luego "Fin" y, después de 2 segundos, "Han pasado 2 segundos" aparecerá en la consola. Esto demuestra que `setTimeout()` permite que el resto del código se ejecute mientras espera que pase el tiempo especificado.
+
+
+
+### ASYNC
+
+Nos permite facilitar el uso de promesas. Indica que una función regresa una promesa
+
+```javascript
+async function miFuncionConPromesa(){
+	return 'saludos con promesa y async'
+}
+
+miFuncionConPromesa().then(valor => console.log(valor));
+```
+
+
+
+### ASYNC Y AWAIT
+
+```javascript
+async function miFuncionConPromesaYAwait(){
+	let miPromesa = new Promise( resolver => {
+        resolver('Promesa con await')
+    });
+    
+    console.log( await miPromesa );
+}
+
+miFuncionConPromesaYAwait();
+```
+
+
+
+#### 							
+
+# DOM (Document Object Model)
+
+
+
+Representación de los objetos que conforman la estructura de un documento en la web.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <tittle>Ejemplo</tittle>
+    </head>
+    <body>
+        <h1>JavaScript</h1>
+        <p>Hola Mundo</p>
+    </body>
+</html>
+```
+
+El DOM representa a los elementos como nodos (elementos) y objetos con los cuales podemos trabajar en JavaScript.
+
+#### Nodos
+
+Los nodos del DOM son objetos que representan diferentes partes del documento, como elementos HTML, atributos, texto, comentarios, etc. Cada nodo en el DOM es un objeto con propiedades y métodos que permiten acceder y manipular el contenido y la estructura del documento HTML.
+
+Hay varios tipos de nodos en el DOM, y algunos de los más comunes incluyen:
+
+1. **Elementos**: Representan las etiquetas HTML en el documento, como `<div>`, `<p>`, `<a>`, etc.
+2. **Atributos**: Representan los atributos de los elementos HTML, como `id`, `class`, `src`, etc.
+3. **Texto**: Representa el contenido de texto dentro de un elemento HTML.
+4. **Comentarios**: Representa los comentarios HTML en el documento.
+5. **Documentos**: Representa todo el documento HTML y sirve como punto de entrada para acceder a otros nodos.
+
+Los nodos del DOM están organizados en una estructura de árbol, donde cada nodo puede tener cero o más nodos hijos, y un nodo puede tener un solo nodo padre (excepto el nodo raíz).
+
+#### Tipos de Nodos
+
+- #####  Root Node (Nodo Raíz) -> Nodo ubicado en la parte superior del árbol. en HTML, es  < html >.
+
+- Parent Node (Nodo padre) -> Nodo que contiene a otro nodo en la jerarquia del DOM, head .
+
+- Child Node (Nodo hijo) -> Nodo contenido directamente dentro de otro nodo, head - title.
+
+- Descendant Node (Nodo descendiente) -> Nodo contenido dentro de otro nodo en la jerarquia del DOM (directa o indirectamente), body, div - h1.  
+
+- Sibling Nodes (Nodos hermanos) -> nodos ubicados en el mismo nivel de la jerarquia del DOM, head y body.
+
+
+
+## Acceder al DOM HTML con JavaScript
+
+
+
+Para poder trabajar el DOM HTML tenemos el objeto **"document",** asi que ese es el objeto que vamos a utilizar para poder acceder a los elementos de nuestro documento html.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <tittle>Ejemplo</tittle>
+    </head>
+    <body>
+        <h1 id='cabecero'>JavaScript</h1>
+        <p id='hola'>Hola Mundo</p>
+        
+        <script>
+        	let cabecero = document
+        </script>
+    </body>
+</html>
+```
+
+
+
+Posteriormente tenemos los metodos getElementById(),  getElementsByClassName(), getElementsByTagName(), querySelector() y querySelectorAll().
+
+```html
+<!-- UTILIZAREMOS  getElementById() -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <tittle>Ejemplo</tittle>
+    </head>
+    <body>
+        <h1 id='cabecero'>JavaScript</h1>
+        <p id='hola'>Hola Mundo</p>
+        
+        <script>
+        	let cabecero = document.getElementById('cabecero'); //Nos regresa el objeto
+        </script>
+    </body>
+</html>
+
+<!-- UTILIZAREMOS  getElementByTagName(), ESTO ES RECUPERAR EL ELMENTO POR EL TIPO DE ELEMENTO HTML -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <tittle>Ejemplo</tittle>
+    </head>
+    <body>
+        <h1 id='cabecero'>JavaScript</h1>
+        <p>Hola Mundo</p>
+        <p>Hola Mundooo</p>
+        <p>Hola Mundoooooo</p>
+        
+        <script>
+        	let parrafos = document.getElementByTagName('p'); //En la ('p') especificamos que estamos buscando todos los elementos de tipo parrafo, y eso normalmente nos regresa objetos.
+            
+        </script>
+    </body>
+</html>
+
+<!-- UTILIZAREMOS  getElementByClassName(), ESTO ES RECUPERAR EL ELMENTO POR EL TIPO DE CLASE -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <tittle>Ejemplo</tittle>
+        <style>
+            .azul{
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id='cabecero'>JavaScript</h1>
+        <p class='azuul'>Hola Mundo</p>
+        <p class='azul'>Hola Mundooo</p>
+        <p class='azul'>Hola Mundoooooo</p>
+        
+        <script>
+        	let parrafos = document.getElementByClassName('azul'); //En la ('p') especificamos que estamos buscando todos los elementos de tipo parrafo, y eso normalmente nos regresa objetos.
+            
+        </script>
+    </body>
+</html>
+
+<!-- UTILIZAREMOS  querySelectorAll(), ESTO ES RECUPERAR EL ELMENTO POR EL TIPO DE CLASE Y TIPO DE ELEMENTO HTML -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <tittle>Ejemplo</tittle>
+        <style>
+            .azul{
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id='cabecero'>JavaScript</h1>
+        <p class='azuul'>Hola Mundo</p>
+        <p class='azul'>Hola Mundooo</p>
+        <p class='azul'>Hola Mundoooooo</p>
+        
+        <script>
+        	let parrafos = document.querySelectorAll('p.azul'); //En la ('p') especificamos que estamos buscando todos los elementos de tipo parrafo, y eso normalmente nos regresa objetos.
+            
+        </script>
+    </body>
+</html>
+```
+
+
+
+Para acceder al valor utilizamos la propiedad de .innerHTML
+
+La propiedad innerHTML se utiliza en programación web, especialmente con JavaScript, para acceder o modificar el contenido HTML dentro de un elemento específico en una página web.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <tittle>Ejemplo</tittle>
+    </head>
+    <body>
+        <h1 id='cabecero'>JavaScript</h1>
+        <p id='hola'>Hola Mundo</p>
+        
+        <script>
+        	let cabecero = document.getElementById('cabecero').innerHTML; //Nos regresa el  valor	
+            console.log(cabecero)
+        </script>
+    </body>
+</html>
+```
+
+
+
+### MODIFICAR EL DOM HTML 
+
+```javascript
+cabecero.innerHTML = 'Nuevo valor del cabecero'
+```
+
+
 
 
 
 # CLASES 
 
-Es una plantilla, se definen los atributos y metodos. A partir de esta creamos ojetos que son instancia de una clase.
+Es una plantilla, se definen los atributos y métodos. A partir de esta creamos ojetos que son instancia de una clase.
 
 ```javascript
 class Person{
